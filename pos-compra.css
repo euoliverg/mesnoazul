@@ -1,0 +1,27 @@
+/* Estilo das páginas pós-compra (upsell, downsell, obrigado). Mesmos tokens da página de vendas. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Nunito:wght@800;900&family=IBM+Plex+Mono:wght@600&display=swap");
+:root { --azul: #1F4E79; --azul-escuro: #163A5A; --azul-claro: #DCEAF7; --verde: #2E7D32; --vermelho: #C0392B; --texto: #1E2329; --suave: #5B6570; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, system-ui, sans-serif; color: var(--texto); background: #fff; font-size: 17px; line-height: 1.6; }
+.topo { padding: 14px 16px; border-bottom: 1px solid #edf1f5; }
+.logo { font-family: Nunito; font-weight: 900; color: var(--azul); letter-spacing: .5px; }
+.logo i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--azul); margin-right: 8px; }
+.wrap { max-width: 640px; margin: 0 auto; padding: 28px 16px 48px; }
+h1 { font-family: Nunito; font-weight: 900; color: var(--azul-escuro); font-size: clamp(28px, 6vw, 40px); line-height: 1.15; margin: 8px 0 12px; }
+h1 em { font-style: normal; color: var(--azul); background: linear-gradient(transparent 62%, var(--azul-claro) 62%); }
+h2 { font-family: Nunito; font-weight: 800; color: var(--azul-escuro); font-size: 22px; margin: 0 0 10px; }
+.lead { color: var(--suave); }
+.ok { display: inline-block; background: #E8F5E9; color: var(--verde); font-weight: 600; border-radius: 999px; padding: 6px 14px; font-size: 15px; margin: 0; }
+.cartao { border: 2px solid var(--azul); border-radius: 18px; padding: 22px 20px; margin: 22px 0; }
+.lista { list-style: none; padding: 0; margin: 0 0 12px; }
+.lista li { padding: 8px 0 8px 28px; position: relative; border-bottom: 1px dashed #d9e2ec; }
+.lista li::before { content: "✓"; position: absolute; left: 0; color: var(--verde); font-weight: 700; }
+.passos { padding-left: 20px; margin: 0 0 10px; } .passos li { margin-bottom: 10px; }
+.preco { font-family: Nunito; font-weight: 900; color: var(--azul); font-size: 56px; line-height: 1; margin: 14px 0 6px; }
+.preco span { font-size: 22px; vertical-align: 22px; margin-right: 4px; }
+.nota { font-size: 14px; color: var(--suave); }
+.kiwify-botao { margin-top: 16px; text-align: center; }
+.rodape-nota { font-size: 14px; color: var(--suave); }
+.alerta { background: #FBE9E7; border-left: 4px solid var(--vermelho); border-radius: 6px; padding: 10px 14px; font-size: 15px; }
+a { color: var(--azul); }
+a:focus-visible { outline: 3px solid #F2B705; outline-offset: 3px; }

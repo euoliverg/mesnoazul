@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit Orçamento da Família 2027 · Mês no Azul</title>
+<meta name="description" content="Planilha pronta + guia + plano de 30 dias para organizar o orçamento da casa e montar um plano para negociar as dívidas. R$ 27, acesso imediato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #1F4E79; --azul-escuro: #163A5A; --azul-claro: #DCEAF7;
+    --papel: #FFFDF7; --pauta: #C9D9EA; --margem: #E8A39B;
+    --vermelho: #C0392B; --verde: #2E7D32; --texto: #1E2329; --suave: #5B6570;
+    --raio: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; color: var(--texto); background: #fff; font-size: 17px; line-height: 1.6; }
+  h1, h2, h3 { font-family: Nunito, Inter, sans-serif; line-height: 1.15; margin: 0; color: var(--azul-escuro); }
+  h1 { font-size: clamp(32px, 7vw, 54px); font-weight: 900; letter-spacing: -.5px; }
+  h2 { font-size: clamp(26px, 5vw, 38px); font-weight: 800; margin-bottom: 18px; }
+  h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  p { margin: 0 0 14px; }
+  a { color: var(--azul); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  .faixa { padding: 64px 0; }
+  .faixa.azul { background: var(--azul-claro); }
+  .num { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  /* Topo */
+  .topo { padding: 14px 0; border-bottom: 1px solid #edf1f5; }
+  .logo { font-family: Nunito; font-weight: 900; color: var(--azul); letter-spacing: .5px; font-size: 18px; text-decoration: none; }
+  .logo span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--azul); margin-right: 8px; vertical-align: 1px; }
+
+  /* Hero */
+  .hero { padding: 40px 0 56px; }
+  .hero .grade { display: grid; gap: 36px; align-items: center; }
+  @media (min-width: 880px) { .hero .grade { grid-template-columns: 1.05fr .95fr; } }
+  .hero .lead { font-size: 19px; color: var(--suave); max-width: 520px; margin-top: 16px; }
+  .hero h1 em { font-style: normal; color: var(--azul); background: linear-gradient(transparent 62%, var(--azul-claro) 62%); }
+
+  /* Assinatura: o caderninho de contas */
+  .caderno { background: var(--papel); border-radius: 6px; box-shadow: 0 1px 0 #e7e2d4, 0 18px 40px -18px rgba(22,58,90,.35); padding: 22px 20px 18px 46px; position: relative; transform: rotate(-1.2deg); max-width: 440px; margin: 0 auto; width: 100%;
+    background-image: linear-gradient(90deg, transparent 33px, var(--margem) 33px, var(--margem) 35px, transparent 35px), repeating-linear-gradient(var(--papel) 0 33px, var(--pauta) 33px 34px); }
+  .caderno .tit { font-family: Nunito; font-weight: 800; color: var(--azul); font-size: 15px; height: 34px; line-height: 34px; margin-top: -6px; }
+  .caderno ul { list-style: none; margin: 0; padding: 0; }
+  .caderno li { display: flex; justify-content: space-between; height: 34px; line-height: 34px; font-size: 15px; }
+  .caderno li .num { color: var(--texto); }
+  .caderno li.ent .num { color: var(--verde); }
+  .caderno .total { display: flex; justify-content: space-between; align-items: center; height: 44px; margin-top: 4px; border-top: 2px solid var(--texto); font-weight: 600; }
+  .saldo { position: relative; display: inline-block; min-width: 132px; text-align: right; }
+  .saldo b { font-family: "IBM Plex Mono", monospace; font-size: 22px; }
+  .saldo .antes { color: var(--vermelho); }
+  .saldo .depois { color: var(--azul); position: absolute; right: 0; top: 0; opacity: 0; }
+  .caderno .nota { font-size: 13px; color: var(--suave); margin: 10px 0 0; line-height: 1.4; }
+  .risco { position: relative; }
+  .risco::after { content: ""; position: absolute; left: -2px; right: -2px; top: 50%; height: 2px; background: var(--azul); transform: scaleX(0); transform-origin: left; }
+  @media (prefers-reduced-motion: no-preference) {
+    .risco.r1::after { animation: risca .5s ease-out 1.2s forwards; }
+    .risco.r2::after { animation: risca .5s ease-out 1.8s forwards; }
+    .saldo .antes { animation: some .4s ease 2.6s forwards; }
+    .saldo .depois { animation: aparece .5s ease 2.9s forwards; }
+  }
+  @media (prefers-reduced-motion: reduce) { .saldo .antes { display: none; } .saldo .depois { position: static; opacity: 1; } .risco::after { transform: scaleX(1); } }
+  @keyframes risca { to { transform: scaleX(1); } }
+  @keyframes some { to { opacity: 0; transform: translateY(-6px); } }
+  @keyframes aparece { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Botão */
+  .cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--azul); color: #fff; font-family: Nunito; font-weight: 800; font-size: 19px; text-decoration: none; padding: 17px 28px; border-radius: 999px; min-height: 56px; box-shadow: 0 8px 20px -8px rgba(31,78,121,.55); transition: background .15s, transform .15s; }
+  .cta:hover { background: var(--azul-escuro); transform: translateY(-1px); }
+  .cta:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #F2B705; outline-offset: 3px; }
+  .preco-linha { margin-top: 14px; font-size: 15px; color: var(--suave); }
+  .preco-linha b { color: var(--texto); }
+  .acoes { margin-top: 26px; }
+
+  /* Situações */
+  .situacoes { display: grid; gap: 12px; margin-top: 8px; }
+  @media (min-width: 720px) { .situacoes { grid-template-columns: 1fr 1fr; } }
+  .situacoes div { background: #fff; border-radius: var(--raio); padding: 16px 18px; font-weight: 500; border-left: 4px solid var(--azul); }
+
+  /* O que vem */
+  .pecas { display: grid; gap: 18px; }
+  @media (min-width: 880px) { .pecas { grid-template-columns: repeat(3, 1fr); } }
+  .peca { border: 1px solid #e3eaf2; border-radius: var(--raio); padding: 20px; background: #fff; }
+  .peca .tag { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--azul); background: var(--azul-claro); border-radius: 6px; padding: 2px 8px; margin-bottom: 12px; }
+  .peca ul { padding-left: 18px; margin: 8px 0 0; color: var(--suave); font-size: 15px; }
+  .abas { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+  .abas span { font-size: 12px; border: 1px solid var(--pauta); border-bottom: 3px solid var(--azul); border-radius: 6px 6px 0 0; padding: 3px 8px; background: #fff; }
+
+  /* Passos */
+  .passos { counter-reset: passo; display: grid; gap: 16px; }
+  @media (min-width: 880px) { .passos { grid-template-columns: repeat(3, 1fr); } }
+  .passo { position: relative; padding: 18px 18px 18px 64px; background: #fff; border-radius: var(--raio); }
+  .passo::before { counter-increment: passo; content: counter(passo); position: absolute; left: 18px; top: 18px; width: 32px; height: 32px; border-radius: 50%; background: var(--azul); color: #fff; font-family: Nunito; font-weight: 900; display: grid; place-items: center; }
+  .passo small { display: block; font-family: "IBM Plex Mono", monospace; color: var(--azul); font-size: 12px; margin-bottom: 4px; }
+
+  /* Combinado honesto */
+  .honesto { display: grid; gap: 18px; }
+  @media (min-width: 880px) { .honesto { grid-template-columns: 1fr 1fr; } }
+  .lista { list-style: none; padding: 0; margin: 0; }
+  .lista li { padding: 10px 0 10px 32px; position: relative; border-bottom: 1px dashed #d9e2ec; }
+  .lista li::before { position: absolute; left: 0; top: 9px; font-weight: 700; }
+  .lista.sim li::before { content: "✓"; color: var(--verde); }
+  .lista.nao li::before { content: "✕"; color: var(--vermelho); }
+
+  /* Oferta */
+  .oferta { max-width: 560px; margin: 0 auto; background: #fff; border-radius: 20px; padding: 28px 22px; box-shadow: 0 20px 50px -24px rgba(22,58,90,.4); text-align: center; border: 2px solid var(--azul); }
+  .oferta .valor { font-family: Nunito; font-weight: 900; font-size: 64px; color: var(--azul); line-height: 1; margin: 6px 0; }
+  .oferta .valor small { font-size: 24px; vertical-align: 26px; margin-right: 4px; }
+  .oferta ul { text-align: left; margin: 18px 0 22px; }
+  .oferta .cta { width: 100%; }
+  .selos { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: center; font-size: 14px; color: var(--suave); margin-top: 14px; }
+  .bump-aviso { font-size: 14px; color: var(--suave); background: var(--azul-claro); border-radius: 10px; padding: 10px 12px; margin-top: 16px; text-align: left; }
+
+  /* Garantia */
+  .garantia { display: grid; gap: 18px; align-items: center; }
+  @media (min-width: 720px) { .garantia { grid-template-columns: 120px 1fr; } }
+  .selo7 { width: 120px; height: 120px; border-radius: 50%; border: 3px dashed var(--azul); display: grid; place-items: center; text-align: center; font-family: Nunito; font-weight: 900; color: var(--azul); line-height: 1; }
+  .selo7 b { font-size: 44px; display: block; }
+
+  /* FAQ */
+  details { border-bottom: 1px solid #dfe7ef; padding: 4px 0; }
+  summary { cursor: pointer; font-weight: 600; padding: 14px 28px 14px 0; list-style: none; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 10px; font-size: 24px; color: var(--azul); }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--suave); }
+
+  footer { background: var(--azul-escuro); color: #c9d6e3; font-size: 14px; padding: 36px 0 90px; }
+  footer a { color: #fff; }
+  footer p { margin-bottom: 8px; }
+
+  /* Barra fixa no celular */
+  .barra { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid #e3eaf2; padding: 10px 16px; display: flex; gap: 12px; align-items: center; justify-content: space-between; z-index: 10; }
+  .barra .cta { padding: 12px 20px; font-size: 16px; min-height: 48px; }
+  .barra span { font-size: 14px; line-height: 1.3; }
+  @media (min-width: 880px) { .barra { display: none; } footer { padding-bottom: 36px; } }
+</style>
+</head>
+<body>
+
+<header class="topo"><div class="wrap"><a class="logo" href="#"><span></span>MÊS NO AZUL</a></div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap grade">
+    <div>
+      <h1>Descubra para onde vai o seu dinheiro e feche o mês <em>no azul</em>.</h1>
+      <p class="lead">Uma planilha pronta, um guia direto e um plano de 30 dias para você organizar as contas da casa e montar um plano para negociar as dívidas. Sem economês e sem julgamento.</p>
+      <div class="acoes">
+        <a class="cta" href="#CHECKOUT_KIWIFY" data-checkout>Quero organizar meu orçamento</a>
+        <p class="preco-linha"><b>R$ 27</b> no Pix, cartão ou boleto · acesso imediato · garantia de 7 dias</p>
+      </div>
+    </div>
+
+    <figure class="caderno" aria-label="Exemplo de caderno de contas: o saldo do mês passa de negativo para positivo depois de dois cortes">
+      <div class="tit">Contas de março (exemplo)</div>
+      <ul>
+        <li class="ent"><span>Salário</span><span class="num">+2.400,00</span></li>
+        <li><span>Aluguel</span><span class="num">−900,00</span></li>
+        <li><span>Mercado</span><span class="num">−780,00</span></li>
+        <li><span>Luz, água, gás</span><span class="num">−262,00</span></li>
+        <li><span class="risco r1">Assinaturas que nem uso</span><span class="num">−89,90</span></li>
+        <li><span>Fatura do cartão</span><span class="num">−450,00</span></li>
+        <li><span class="risco r2">Delivery (14 pedidos)</span><span class="num">−312,00</span></li>
+      </ul>
+      <div class="total"><span>Sobrou</span><span class="saldo"><b class="antes">−393,90</b><b class="depois">+8,00</b></span></div>
+      <p class="nota">Valores ilustrativos. Neste exemplo, dois cortes viraram o saldo. Nas suas contas o resultado pode ser outro, mas você vai saber onde mexer primeiro.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="faixa azul">
+  <div class="wrap">
+    <h2>É para você se…</h2>
+    <div class="situacoes">
+      <div>O salário cai e, no dia 15, já não sabe onde foi parar.</div>
+      <div>Paga o mínimo do cartão e a fatura nunca diminui.</div>
+      <div>Tem dívidas em lugares diferentes e não sabe por qual começar.</div>
+      <div>Já tentou anotar em caderno ou app e desistiu na segunda semana.</div>
+      <div>Quer conversar sobre dinheiro em casa sem virar briga.</div>
+      <div>Quer começar 2027 com as contas na mão, não na cabeça.</div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap">
+    <h2>O que você recebe</h2>
+    <div class="pecas">
+      <article class="peca">
+        <span class="tag">Excel + Google Sheets</span>
+        <h3>Planilha Orçamento da Família 2027</h3>
+        <p>É só preencher as células azuis. As contas são feitas sozinhas. Funciona no celular pelo Google Planilhas.</p>
+        <div class="abas" aria-label="Abas da planilha"><span>Comece aqui</span><span>Lançamentos</span><span>Orçamento do mês</span><span>Resumo do ano</span><span>Dívidas</span><span>Reserva</span></div>
+        <ul><li>Planejado x real, com alerta vermelho quando passa do limite</li><li>Lista de dívidas com duas ordens de pagamento calculadas</li><li>Barra de progresso da reserva de emergência</li></ul>
+      </article>
+      <article class="peca">
+        <span class="tag">PDF · 7 capítulos</span>
+        <h3>Guia Mês no Azul</h3>
+        <p>Leitura de uns 40 minutos, com exemplos de casa de verdade.</p>
+        <ul><li>Por que o dinheiro "some" e onde procurar</li><li>30 ajustes práticos para cortar sem sofrer</li><li>Como priorizar dívidas e escolher a ordem</li><li>Roteiro pronto para negociar</li><li>Como identificar golpes de "limpa nome"</li></ul>
+      </article>
+      <article class="peca">
+        <span class="tag">1 tarefa por dia</span>
+        <h3>Plano de 30 dias</h3>
+        <p>Do "não sei quanto gasto" até "tenho um plano para as dívidas", com tarefas de 10 a 20 minutos.</p>
+        <ul><li>Dia 9: listar todas as dívidas</li><li>Dia 19: negociar a primeira</li><li>Dia 23: guardar o primeiro valor da reserva</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="faixa azul">
+  <div class="wrap">
+    <h2>Como funciona</h2>
+    <div class="passos">
+      <div class="passo"><small>No mesmo dia</small><h3>Retrato do mês</h3><p>Você lança o que entra e o que sai. A planilha mostra o saldo e o que passou do limite.</p></div>
+      <div class="passo"><small>Na primeira semana</small><h3>Dívidas no papel</h3><p>Você lista tudo o que deve e escolhe a ordem: maior juros ou menor saldo.</p></div>
+      <div class="passo"><small>Até o dia 30</small><h3>Plano em ação</h3><p>Você corta o que não faz falta, negocia a primeira dívida e começa a reserva.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap">
+    <h2>Combinado honesto</h2>
+    <div class="honesto">
+      <div>
+        <h3>O kit faz</h3>
+        <ul class="lista sim">
+          <li>Mostra quanto entra, quanto sai e para onde vai</li>
+          <li>Organiza suas dívidas e a ordem de pagamento</li>
+          <li>Dá um roteiro para negociar pelos canais oficiais</li>
+          <li>Cria uma rotina de 15 minutos por semana</li>
+        </ul>
+      </div>
+      <div>
+        <h3>O kit não faz</h3>
+        <ul class="lista nao">
+          <li>Não paga dívida nem "limpa nome" por você</li>
+          <li>Não promete que vai sobrar um valor certo por mês</li>
+          <li>Não é empréstimo, consultoria ou serviço de crédito</li>
+          <li>Não tem ligação com bancos ou órgãos públicos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS: inserir aqui só depoimentos reais, com autorização por escrito, depois das primeiras vendas. Não usar depoimentos inventados. -->
+
+<section class="faixa azul" id="oferta">
+  <div class="wrap">
+    <div class="oferta">
+      <h2 style="margin-bottom:4px">Kit Orçamento da Família 2027</h2>
+      <p style="color:var(--suave);margin:0">Planilha + Guia + Plano de 30 dias</p>
+      <div class="valor"><small>R$</small>27</div>
+      <p style="margin:0;color:var(--suave)">pagamento único, sem mensalidade</p>
+      <ul class="lista sim">
+        <li>Planilha para Excel e Google Sheets</li>
+        <li>Guia Mês no Azul em PDF</li>
+        <li>Plano de 30 dias</li>
+        <li>Acesso imediato depois da confirmação do pagamento</li>
+      </ul>
+      <a class="cta" href="#CHECKOUT_KIWIFY" data-checkout>Quero o kit por R$ 27</a>
+      <div class="selos"><span>Pix, cartão ou boleto</span><span>Pagamento processado pela Kiwify</span></div>
+      <p class="bump-aviso">No checkout você também pode incluir o <b>Planner Mês no Azul 2027</b> para imprimir, por R$ 12,90. É opcional.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap garantia">
+    <div class="selo7"><div><b>7</b>dias</div></div>
+    <div>
+      <h2 style="margin-bottom:8px">Garantia de 7 dias</h2>
+      <p>Se não gostar, peça o reembolso em até 7 dias depois da compra pela própria Kiwify ou pelo nosso e-mail. Você recebe o valor de volta, sem precisar explicar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faixa azul">
+  <div class="wrap" style="max-width:760px">
+    <h2>Perguntas frequentes</h2>
+    <details><summary>Preciso saber mexer em Excel?</summary><p>Não. Você só digita nas células azuis (data, descrição, valor) e escolhe a categoria numa lista. As fórmulas já estão prontas nas células brancas: é só não apagar.</p></details>
+    <details><summary>Funciona no celular?</summary><p>Sim, pelo app Google Planilhas (gratuito). O guia em PDF abre em qualquer celular.</p></details>
+    <details><summary>Como recebo o acesso?</summary><p>Depois que o pagamento é confirmado, você recebe um e-mail da Kiwify com o acesso à área de membros, onde estão todos os arquivos. No Pix, a confirmação costuma ser em poucos minutos.</p></details>
+    <details><summary>O kit limpa meu nome ou aumenta meu score?</summary><p>Não. Ninguém consegue prometer isso de forma honesta. O kit ajuda você a organizar as contas e a negociar pelos canais oficiais dos credores.</p></details>
+    <details><summary>Tenho muitas dívidas. Serve para mim?</summary><p>Serve para enxergar a situação e montar um plano. Se as dívidas já tomam o básico para viver, o guia explica a Lei do Superendividamento e onde buscar ajuda gratuita (Procon e Defensoria Pública).</p></details>
+    <details><summary>É assinatura?</summary><p>Não. É pagamento único de R$ 27.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias para pedir o reembolso, sem precisar explicar.</p></details>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap" style="text-align:center">
+    <h2>Comece hoje. Leva uma tarde.</h2>
+    <a class="cta" href="#CHECKOUT_KIWIFY" data-checkout>Quero organizar meu orçamento</a>
+    <p class="preco-linha"><b>R$ 27</b> · acesso imediato · garantia de 7 dias</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Mês no Azul</b></p>
+    <p>Material educativo de organização financeira pessoal. Não é consultoria financeira, jurídica ou de crédito. Não temos vínculo com bancos, birôs de crédito ou órgãos públicos. Resultados dependem da situação de cada pessoa.</p>
+
+  </div>
+</footer>
+
+<div class="barra" aria-hidden="false">
+  <span><b>Kit Orçamento 2027</b><br>R$ 27 · garantia de 7 dias</span>
+  <a class="cta" href="#CHECKOUT_KIWIFY" data-checkout>Quero o kit</a>
+</div>
+
+</body>
+</html>
